@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (moveVelocity, GetComponent<Rigidbody2D> ().velocity.y);
 
 	}
-	//Check if Grounded
+	//Check if on the ground
 	void OnTriggerEnter2D()
 	{
 		grounded = true;
