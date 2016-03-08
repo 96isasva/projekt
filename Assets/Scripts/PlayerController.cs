@@ -11,11 +11,26 @@ public class PlayerController : MonoBehaviour
 
 	//Grounded Vars
 	bool grounded = true;
+
+	int number;
+
 	
 	void Update () 
 	{
-		//Jumping
-		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Z) || Input.GetKeyDown (KeyCode.W)) 
+		if (Input.GetKeyDown (KeyCode.C)) {
+			number = 1;
+		}
+
+		if (Input.GetKeyDown (KeyCode.V)) {
+			number = 2;
+		}
+
+		if (Input.GetKeyDown (KeyCode.B)) {
+			number = 3;
+		}
+
+		//Jumping	
+		if ((Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.Z) || Input.GetKeyDown (KeyCode.W)) & number == 1) 
 		{
 			if(grounded)
 			{
@@ -26,11 +41,11 @@ public class PlayerController : MonoBehaviour
 		moveVelocity = 0;
 
 		//Left Right Movement
-		if (Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) 
+		if ((Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) & number == 1 ) 
 		{
 			moveVelocity = -speed;
 		}
-		if (Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) 
+		if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) & number == 1 ) 
 		{
 			moveVelocity = speed;
 		}
@@ -38,6 +53,7 @@ public class PlayerController : MonoBehaviour
 		GetComponent<Rigidbody2D> ().velocity = new Vector2 (moveVelocity, GetComponent<Rigidbody2D> ().velocity.y);
 
 	}
+
 	//Check if on the ground
 	void OnTriggerEnter2D()
 	{
